@@ -4,6 +4,7 @@
 - [Insert](#insert)
 - [Query](#query)
 - [Calculated Columns](#calculated_columns)
+- [String Operators](#string_operator)
 
 #### <a name="create_table"></a>Create Table
 
@@ -69,4 +70,46 @@ use `AS` new field name
 ```sql
 SELECT name,population,area, population / area AS density
 FROM cities
+```
+
+#### <a name="string_operator"></a>String Operators
+
+| Symbol     | Operators                              |
+| :--------- | :------------------------------------- |
+| `ll`       | Join two strings                       |
+| `CONCAT()` | Join two strings                       |
+| `LOWER()`  | Gives a lower case string              |
+| `LENGTH()` | Gives number of characters of a string |
+| `UPPER()`  | Gives an uppper case string            |
+
+use `||`
+
+```sql
+SELECT name || ', '|| country AS location
+FROM cities
+
+```
+
+use `CONCAT`
+
+```sql
+SELECT CONCAT(name,', ', country) AS location
+FROM cities
+
+```
+
+use `UPPER()` and `LOWER()`
+
+```sql
+SELECT UPPER(name) as name, LOWER(country) as country
+FROM cities
+
+```
+
+use `LENGTH()`
+
+```sql
+SELECT LENGTH(name) as name_length
+FROM cities
+
 ```
