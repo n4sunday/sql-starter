@@ -23,7 +23,7 @@ CREATE TABLE cities (
 INSERT INTO cities (name, country, population, area)
 VALUES ('Tokyo', 'Japan', 38505000, 8233);
 ```
-`ทore than one`
+`more than one`
 ```sql
 INSERT INTO cities (name, country, population, area)
 VALUES
