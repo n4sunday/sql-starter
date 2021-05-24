@@ -1,7 +1,8 @@
+#SQL
 
 
-- [<a name="create_table"></a>Create Table](#create-table)
-- [<a name="insert"></a>Insert](#insert)
+- [Create Table](#create_table)
+- [Insert](#insert)
 
 
 #### <a name="create_table"></a>Create Table 
