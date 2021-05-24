@@ -1,12 +1,11 @@
 # SQL
 
-
 - [Create Table](#create_table)
 - [Insert](#insert)
 - [Query](#query)
+- [Calculated Columns](#calculated_columns)
 
-
-#### <a name="create_table"></a>Create Table 
+#### <a name="create_table"></a>Create Table
 
 ```sql
 CREATE TABLE cities (
@@ -20,11 +19,14 @@ CREATE TABLE cities (
 #### <a name="insert"></a>Insert
 
 `one record`
+
 ```sql
 INSERT INTO cities (name, country, population, area)
 VALUES ('Tokyo', 'Japan', 38505000, 8233);
 ```
+
 `more than one`
+
 ```sql
 INSERT INTO cities (name, country, population, area)
 VALUES
@@ -34,13 +36,37 @@ VALUES
 ```
 
 #### <a name="query"></a>Query
+
 ```sql
 SELECT * FROM cities
 ```
+
 ```sql
 SELECT name, area FROM cities
 ```
+
 `order optional`
+
 ```sql
 SELECT area, name, population FROM cities
+```
+
+#### <a name="calculated_columns"></a>Calculated Columns
+
+| Symbol | Operators   |
+| :----- | :---------- |
+| `+`    | Add         |
+| `-`    | Subtract    |
+| `*`    | Multiply    |
+| `/`    | Divide      |
+| `^`    | Exponent    |
+| `l/`   | Square Root |
+| `@`    | Absolute    |
+| `%`    | Remainder   |
+
+use `AS` new field name
+
+```sql
+SELECT name,population,area, population / area AS density
+FROM cities
 ```
