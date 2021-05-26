@@ -5,6 +5,7 @@
 - [Query](#query)
 - [Calculated Columns](#calculated_columns)
 - [String Operators](#string_operator)
+- [Filter](#filter)
 
 #### <a name="create_table"></a>Create Table
 
@@ -112,4 +113,74 @@ use `LENGTH()`
 SELECT LENGTH(name) as name_length
 FROM cities
 
+```
+
+#### <a name="filter"></a>Filter
+
+| Symbol    | Operators                                   |
+| :-------- | :------------------------------------------ |
+| `=`       | Are the values equal?                       |
+| `>`       | Is the values on the left greater?          |
+| `<`       | Is the values on the right less?            |
+| `>=`      | Is the values on the left greater or equal? |
+| `<=`      | Is the values on the right lesser or equal? |
+| `IN`      | Is the value present in a list?             |
+| `<>`      | Are the values not equal?                   |
+| `!=`      | Are the values not equal?                   |
+| `BETWEEN` | Is the value between two other values?      |
+| `NOT IN`  | Is the value not present in a list?         |
+
+use `>`
+
+```sql
+SELECT name, area
+FROM cities
+WHERE area > 4000
+```
+
+use `BETWEEN`
+
+```sql
+SELECT name, area
+FROM cities
+WHERE area BETWEEN 2000 AND 4000
+```
+
+use `IN`
+
+```sql
+SELECT name, area
+FROM cities
+WHERE name IN ('Tokyo','Shanghai')
+```
+
+use `NOT IN`
+
+```sql
+SELECT name, area
+FROM cities
+WHERE name NOT IN ('Tokyo','Shanghai')
+```
+
+use `NOT IN` + `and` + `=`
+
+```sql
+SELECT name,area
+FROM cities
+WHERE area NOT IN (3021,5000) AND name = 'Tokyo'
+```
+
+use `NOT IN` + `OR` + `=`
+
+```sql
+SELECT name,area
+FROM cities
+WHERE area NOT IN (3021,5000) OR name = 'Tokyo'
+```
+
+```sql
+WHERE
+  area NOT IN (3021,5000)
+  OR name = 'Tokyo'
+  OR name = 'Shanghai'
 ```
