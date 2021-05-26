@@ -7,6 +7,7 @@
 - [String Operators](#string_operator)
 - [Filter](#filter)
 - [Update](#update)
+- [Delete](#delete)
 
 #### <a name="create_table"></a>Create Table
 
@@ -202,5 +203,12 @@ WHERE
 ```sql
 UPDATE cities
 SET population = 39505000
+WHERE name = 'Tokyo'
+```
+
+#### Delete
+
+```sql
+DELETE FROM cities
 WHERE name = 'Tokyo'
 ```
