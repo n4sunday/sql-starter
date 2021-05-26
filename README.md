@@ -6,6 +6,7 @@
 - [Calculated Columns](#calculated_columns)
 - [String Operators](#string_operator)
 - [Filter](#filter)
+- [Update](#update)
 
 #### <a name="create_table"></a>Create Table
 
@@ -130,6 +131,8 @@ FROM cities
 | `BETWEEN` | Is the value between two other values?      |
 | `NOT IN`  | Is the value not present in a list?         |
 
+##### Basic Where
+
 use `>`
 
 ```sql
@@ -183,4 +186,21 @@ WHERE
   area NOT IN (3021,5000)
   OR name = 'Tokyo'
   OR name = 'Shanghai'
+```
+
+##### Calculations in Where
+
+```sql
+SELECT *
+FROM cities
+WHERE
+	population / area > 6000
+```
+
+#### <a name="update"></a>Update
+
+```sql
+UPDATE cities
+SET population = 39505000
+WHERE name = 'Tokyo'
 ```
