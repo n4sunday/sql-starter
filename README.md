@@ -194,7 +194,7 @@ WHERE
 SELECT *
 FROM cities
 WHERE
-	population / area > 6000
+  population / area > 6000
 ```
 
 #### <a name="update"></a>Update
