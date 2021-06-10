@@ -224,7 +224,8 @@ CREATE TABLE users (
 
 #### Create Foreign Key
 
-``create``
+`create`
+
 ```sql
 CREATE TABLE photos (
     id SERIAL PRIMARY KEY,
@@ -232,12 +233,24 @@ CREATE TABLE photos (
     user_id INTEGER REFERENCES users(id)
 )
 ```
-``insert``
+
+`insert`
+
 ```sql
 INSERT INTO photos(url, user_id)
-VALUES ('/user/one.jpg',1 )
+VALUES
+    ('/user/one.jpg',1 ),
+    ('/user/two.jpg',2)
 ```
-``query``
+
+`query`
+
 ```sql
 SELECT * FROM photos
+```
+
+#### Running Queries on Associated Data
+```sql
+SELECT url, username FROM photos
+JOIN users ON users.id = photos.user_id
 ```
