@@ -222,7 +222,8 @@ CREATE TABLE users (
 )
 ```
 
-#### Create Foreign Key
+#### Relation
+##### Create Foreign Key
 
 `create`
 
@@ -249,8 +250,20 @@ VALUES
 SELECT * FROM photos
 ```
 
-#### Running Queries on Associated Data
+##### Running Queries on Associated Data
+
 ```sql
 SELECT url, username FROM photos
 JOIN users ON users.id = photos.user_id
+```
+
+##### Delete Cascade
+``ON DELETE CASCADE``
+
+```sql
+CREATE TABLE photos (
+    id SERIAL PRIMARY KEY,
+    url VARCHAR(200),
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+);
 ```
