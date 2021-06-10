@@ -212,3 +212,32 @@ WHERE name = 'Tokyo'
 DELETE FROM cities
 WHERE name = 'Tokyo'
 ```
+
+#### Auto Generated ID
+
+```sql
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50)
+)
+```
+
+#### Create Foreign Key
+
+``create``
+```sql
+CREATE TABLE photos (
+    id SERIAL PRIMARY KEY,
+    url VARCHAR(50),
+    user_id INTEGER REFERENCES users(id)
+)
+```
+``insert``
+```sql
+INSERT INTO photos(url, user_id)
+VALUES ('/user/one.jpg',1 )
+```
+``query``
+```sql
+SELECT * FROM photos
+```
