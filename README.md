@@ -223,6 +223,7 @@ CREATE TABLE users (
 ```
 
 #### Relation
+
 ##### Create Foreign Key
 
 `create`
@@ -258,7 +259,8 @@ JOIN users ON users.id = photos.user_id
 ```
 
 ##### Delete Cascade
-``ON DELETE CASCADE``
+
+`ON DELETE CASCADE`
 
 ```sql
 CREATE TABLE photos (
@@ -269,7 +271,77 @@ CREATE TABLE photos (
 ```
 
 ##### Delete Null
-``ON DELETE SET NULL``
+
+`ON DELETE SET NULL`
+
+```sql
+CREATE TABLE photos (
+  id SERIAL PRIMARY KEY,
+  url VARCHAR(200),
+  user_id INTEGER REFERENCES users(id) ON DELETE SET NULL
+);
+```
+
+#### One-to-One Relationship
+
+```bash
+Boat
+   ├── Crew member
+   ├── Crew member
+   └── Crew member
+```
+
+a boat has `many crew` member
+a crew member `has one` boat
+
+##### Auto Generate ID
+
+user `SERIAL`
+
+```sql
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50)
+)
+```
+
+##### Creating Foreign Keys Columns
+
+use `REFERENCES` table(foreign key)
+
+```sql
+CREATE  TABLE photos (
+    id SERIAL PRIMARY KEY,
+    url VARCHAR(200),
+    user_id INTEGER REFERENCES users(id)
+)
+```
+
+##### Runnig Queries on Associated Data
+
+Find all the photo created by user with id 1
+
+```sql
+SELECT * FROM photos
+WHERE  user_id = 1
+```
+
+List all photos with details about the associated user for each
+
+```sql
+SELECT url, username FROM photos
+JOIN users ON users.id = photos.user_id
+```
+
+##### Constratints Around Deletion
+
+| On Delete Option        | What happens                                                        |
+| :---------------------- | :------------------------------------------------------------------ |
+| `ON DELETE RESTRICT`    | Throw an error                                                      |
+| `ON DELETE NO ACTION`   | Throw an error                                                      |
+| `ON DELETE NO CASCADE`  | Delete the photo too!                                               |
+| `ON DELETE SET NULL`    | Set the foreign key of table to 'NULL'                              |
+| `ON DELETE SET DEFAULT` | Set the foreign key of table to a default value, if one is provided |
 
 ```sql
 CREATE TABLE photos (
