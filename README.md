@@ -350,3 +350,52 @@ CREATE TABLE photos (
   user_id INTEGER REFERENCES users(id) ON DELETE SET NULL
 );
 ```
+
+#### Joining Data from Different Tables
+
+```sql
+CREATE TABLE comments (
+  id SERIAL PRIMARY KEY ,
+  contents VARCHAR(250) ,
+  user_id INTEGER REFERENCES users(id),
+  photo_id INTEGER REFERENCES photos(id)
+)
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50)
+)
+
+INSERT INTO users (username)
+VALUES
+       ('Luke'),
+       ('Solo'),
+       ('Obiwan'),
+       ('Vader'),
+       ('Boba');
+
+INSERT INTO photos (url, user_id)
+VALUES
+    ('test1',4),
+    ('test2',4),
+    ('test3',5),
+    ('test4',5),
+    ('test6',7),
+    ('test7',7),
+    ('test5',6),
+    ('test8',6),
+    ('test9',8);
+
+INSERT INTO comments (contents, user_id, photo_id)
+VALUES
+    ('Go',4,8),
+    ('To',4,8),
+    ('Go',4,9),
+    ('Go',5,10),
+    ('Go',6,7);
+
+SELECT contents, username
+FROM comments
+JOIN users ON comments.user_id = users.id;
+```
+
