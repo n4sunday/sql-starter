@@ -411,3 +411,10 @@ FROM photos AS p
 JOIN  comments ON p.id = comments.photo_id;
 
 ```
+
+#### Aggregating of Record
+```sql
+SELECT user_id
+FROM comments
+GROUP BY user_id
+```
