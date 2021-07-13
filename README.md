@@ -413,8 +413,21 @@ JOIN  comments ON p.id = comments.photo_id;
 ```
 
 #### Aggregating of Record
+
+##### Aggregate Group by
+
 ```sql
 SELECT user_id
 FROM comments
 GROUP BY user_id
 ```
+
+##### Aggregate Fucntion
+
+| Function  |
+| :-------- |
+| `COUNT()` |
+| `SUM()`   |
+| `AVG()`   |
+| `MIN()`   |
+| `MAX()`   |
